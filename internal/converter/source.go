@@ -73,6 +73,12 @@ func (c *SourceConverter) RenderAll() ([]model.Source, error) {
 		return nil, err
 	}
 
+	builderByte, err := ioutil.ReadFile(fmt.Sprintf("%s/src/Builder.swift", c.config.TemplatePath))
+
+	if err != nil {
+		return nil, err
+	}
+
 	interactorTestsByte, err := ioutil.ReadFile(fmt.Sprintf("%s/test/Interactor.swift", c.config.TemplatePath))
 
 	if err != nil {
@@ -91,15 +97,23 @@ func (c *SourceConverter) RenderAll() ([]model.Source, error) {
 		return nil, err
 	}
 
+	builderSpyByte, err := ioutil.ReadFile(fmt.Sprintf("%s/test/BuilderSpy.swift", c.config.TemplatePath))
+
+	if err != nil {
+		return nil, err
+	}
+
 	sourceStrs := []model.Source{
 		*c.RenderInteractor(string(interactorByte)),
 		*c.RenderPresenter(string(presenterByte)),
 		*c.RenderViewController(string(displayByte)),
 		*c.RenderRouter(string(routerByte)),
 		*c.RenderModel(string(modelByte)),
+		*c.RenderBuilder(string(builderByte)),
 		*c.RenderInteractorTests(string(interactorTestsByte)),
 		*c.RenderPresenterTests(string(presenterTestsByte)),
 		*c.RenderViewControllerTests(string(displayTestsByte)),
+		*c.RenderBuilderSpy(string(builderSpyByte)),
 	}
 
 	return sourceStrs, nil
@@ -331,6 +345,40 @@ func (c *SourceConverter) RenderRouter(src string) *model.Source {
 		DestPath: fmt.Sprintf(
 			"%s/%s/%sRouter.swift",
 			c.config.SourceDir,
+			c.sceneName,
+			c.sceneName,
+		),
+		SourceCode: mutSrc,
+	}
+}
+
+func (c *SourceConverter) RenderBuilder(src string) *model.Source {
+
+	var mutSrc string = src
+	mutSrc = strings.ReplaceAll(mutSrc, "__SCENE_NAME__", c.sceneName)
+	mutSrc = c.header.Render(mutSrc, c.sceneName)
+
+	return &model.Source{
+		DestPath: fmt.Sprintf(
+			"%s/%s/%sBuilder.swift",
+			c.config.SourceDir,
+			c.sceneName,
+			c.sceneName,
+		),
+		SourceCode: mutSrc,
+	}
+}
+
+func (c *SourceConverter) RenderBuilderSpy(src string) *model.Source {
+
+	var mutSrc string = src
+	mutSrc = strings.ReplaceAll(mutSrc, "__SCENE_NAME__", c.sceneName)
+	mutSrc = c.header.Render(mutSrc, c.sceneName)
+
+	return &model.Source{
+		DestPath: fmt.Sprintf(
+			"%s/%s/%sBuilderSpy.swift",
+			c.config.TestDir,
 			c.sceneName,
 			c.sceneName,
 		),

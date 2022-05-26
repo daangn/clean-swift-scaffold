@@ -339,3 +339,73 @@ func TestDisplayTests(t *testing.T) {
 		}
 	})
 }
+
+
+// MARK: - Builder
+
+func TestBuilder(t *testing.T) {
+
+	templateData, err := ioutil.ReadFile("../../templates/src/Builder.swift")
+	expectedData, err := ioutil.ReadFile("../../test/ArticleDetailBuilder.swift")
+
+	if err != nil {
+		panic(err.Error())
+	}
+
+	dummySrc := string(templateData)
+	expectedSrc := string(expectedData)
+
+	expectedDestPath := "./Playground/Sources/ArticleDetail/ArticleDetailBuilder.swift"
+
+	t.Run("render builder", func(t *testing.T) {
+		// given
+		sut := createSource()
+
+		// when
+		out := sut.RenderBuilder(dummySrc)
+
+		// then
+		if out.DestPath != expectedDestPath {
+			t.Errorf("invalid destination path\nexpect:\n%s\noutput:\n%s\n", expectedDestPath, out.DestPath)
+		}
+
+		if out.SourceCode != expectedSrc {
+			t.Errorf("Failed to render\n expected:\n%s\noutput:\n%s\n", expectedSrc, out.SourceCode)
+		}
+	})
+}
+
+
+// MARK: - BuilderSpy
+
+func TestBuilderSpy(t *testing.T) {
+
+	templateData, err := ioutil.ReadFile("../../templates/test/BuilderSpy.swift")
+	expectedData, err := ioutil.ReadFile("../../test/ArticleDetailBuilderSpy.swift")
+
+	if err != nil {
+		panic(err.Error())
+	}
+
+	dummySrc := string(templateData)
+	expectedSrc := string(expectedData)
+
+	expectedDestPath := "./Playground/Tests/ArticleDetail/ArticleDetailBuilderSpy.swift"
+
+	t.Run("render builder spy", func(t *testing.T) {
+		// given
+		sut := createSource()
+
+		// when
+		out := sut.RenderBuilderSpy(dummySrc)
+
+		// then
+		if out.DestPath != expectedDestPath {
+			t.Errorf("invalid destination path\nexpect:\n%s\noutput:\n%s\n", expectedDestPath, out.DestPath)
+		}
+
+		if out.SourceCode != expectedSrc {
+			t.Errorf("Failed to render\n expected:\n%s\noutput:\n%s\n", expectedSrc, out.SourceCode)
+		}
+	})
+}
