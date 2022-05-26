@@ -2,7 +2,7 @@
 
 ### Clean-Swift source & test code auto generator
 
-[![Go](https://github.com/GeekTree0101/clean-swift-scaffold/actions/workflows/go.yml/badge.svg?branch=develop)](https://github.com/GeekTree0101/clean-swift-scaffold/actions/workflows/go.yml)
+[![Go](https://github.com/daangn/clean-swift-scaffold/actions/workflows/go.yml/badge.svg)](https://github.com/daangn/clean-swift-scaffold/actions/workflows/go.yml)
 
 
 ## Overview
