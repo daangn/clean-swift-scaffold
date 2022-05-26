@@ -13,12 +13,12 @@ import KarrotCore
 final class ArticleDetailBuilderSpy: ArticleDetailBuildable {
 
   var buildCalled: Int = 0
-  var buildParams: ArticleDetailPayload?
+  var buildPayload: ArticleDetailPayload?
   var buildStub: UIViewController = UIViewController()
 
   func build(payload: ArticleDetailPayload) -> UIViewController {
     self.buildCalled += 1
-    self.buildParams = payload
+    self.buildPayload = payload
     return self.buildStub
   }
 }

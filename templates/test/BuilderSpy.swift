@@ -13,12 +13,12 @@ import KarrotCore
 final class __SCENE_NAME__BuilderSpy: __SCENE_NAME__Buildable {
 
   var buildCalled: Int = 0
-  var buildParams: __SCENE_NAME__Payload?
+  var buildPayload: __SCENE_NAME__Payload?
   var buildStub: UIViewController = UIViewController()
 
   func build(payload: __SCENE_NAME__Payload) -> UIViewController {
     self.buildCalled += 1
-    self.buildParams = payload
+    self.buildPayload = payload
     return self.buildStub
   }
 }
