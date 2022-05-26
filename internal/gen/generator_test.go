@@ -3,7 +3,7 @@ package gen_test
 import (
 	"testing"
 
-	"github.com/Geektree0101/clean-swift-scaffold/internal/gen"
+	"github.com/daangn/clean-swift-scaffold/internal/gen"
 )
 
 func TestReadConfig(t *testing.T) {

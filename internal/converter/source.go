@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Geektree0101/clean-swift-scaffold/internal/model"
+	"github.com/daangn/clean-swift-scaffold/internal/model"
 )
 
 type SourceConverter struct {

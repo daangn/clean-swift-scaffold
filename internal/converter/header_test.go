@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Geektree0101/clean-swift-scaffold/internal/converter"
-	"github.com/Geektree0101/clean-swift-scaffold/internal/model"
+	"github.com/daangn/clean-swift-scaffold/internal/converter"
+	"github.com/daangn/clean-swift-scaffold/internal/model"
 )
 
 const dummySourceCode string = `//

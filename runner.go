@@ -3,7 +3,7 @@ package clean_swift_scaffold
 import (
 	"fmt"
 
-	"github.com/Geektree0101/clean-swift-scaffold/internal/gen"
+	"github.com/daangn/clean-swift-scaffold/internal/gen"
 	"github.com/spf13/cobra"
 )
 

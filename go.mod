@@ -1,4 +1,4 @@
-module github.com/Geektree0101/clean-swift-scaffold
+module github.com/daangn/clean-swift-scaffold
 
 go 1.16
 

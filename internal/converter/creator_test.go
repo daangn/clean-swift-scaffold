@@ -3,7 +3,7 @@ package converter_test
 import (
 	"testing"
 
-	"github.com/Geektree0101/clean-swift-scaffold/internal/converter"
+	"github.com/daangn/clean-swift-scaffold/internal/converter"
 )
 
 // MARK: - Test Double
